@@ -1,9 +1,11 @@
 package org.example;
 
 import java.util.Scanner;
-
+import java.util.logging.Logger;
 public class LinkedList
 {
+    Logger logger=Logger.getLogger("com.api.jar");
+
     Node rootNode=null;
     int count=0;
     Node middnode=null;
@@ -29,7 +31,7 @@ public class LinkedList
             temp.nextNode = new Node(value);
             this.count++;
         }
-        System.out.println("successfully Element added ");
+        logger.info("successfully Element added ");
     }
     public void removeElement(int indecx){
         Node prev= this.rootNode;
@@ -42,7 +44,7 @@ public class LinkedList
             index++;
         }
         prev.nextNode=temp1.nextNode;
-        System.out.println("Successfully Removed Element ");
+        logger.info("Successfully Removed Element ");
     }
     public void addMiddleElement(int value,int indecx)
     {
@@ -58,16 +60,16 @@ public class LinkedList
         this.middnode=new Node(value);
         this.middnode.nextNode=prev.nextNode;
         prev.nextNode=this.middnode;
-        System.out.println("Successfully index based Element inserted ");
+        logger.info("Successfully index based Element inserted ");
     }
     public void display() {
         Node temp = this.rootNode;
 
         if (temp == null) {
-            System.out.println(" LinkedList Is empty!");
+            logger.info(" LinkedList Is empty!");
         } else {
             while (temp != null) {
-                System.out.println(temp.data);
+                logger.info(""+temp.data);
                 temp = temp.nextNode;
             }
 
@@ -77,31 +79,32 @@ public class LinkedList
     {
         LinkedList list = new LinkedList();
         Scanner sc=new Scanner(System.in);
+        Logger logger=Logger.getLogger("com.api.jar");
         int index;
         int choice;
         int element;
         while(true)
         {
-            System.out.println("\n1)add the Element \n2)index based remove element \n3)particular index based insert element\n4)display \n5)exit");
-            System.out.println("Choose any one of the option in the above: ");
+            logger.info("\n1)add the Element \n2)index based remove element \n3)particular index based insert element\n4)display \n5)exit");
+            logger.info("Choose any one of the option in the above: ");
             choice=sc.nextInt();
             if(choice==1)
             {
-                System.out.println("Enter the  element:");
+                logger.info("Enter the  element:");
                 element=sc.nextInt();
                 list.addElement(element);
             }
             else if(choice==2)
             {
-                System.out.println("Enter the index ");
+                logger.info("Enter the index ");
                 index=sc.nextInt();
                 list.removeElement(index);
             }
             else if(choice==3)
             {
-                System.out.println("Enter the  element:");
+                logger.info("Enter the  element:");
                 element=sc.nextInt();
-                System.out.println("Enter the index ");
+                logger.info("Enter the index ");
                 index=sc.nextInt();
                 list.addMiddleElement(element,index);
             }
