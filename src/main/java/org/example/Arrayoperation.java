@@ -5,15 +5,14 @@ import java.util.logging.Logger;
 
 public class Arrayoperation
 {
-    int arr[];
     int index=0;
     int size;
     Logger logger=Logger.getLogger("com.api.jar");
     Arrayoperation(int size)
     {
-        arr=new int[size];
         this.size=size;
     }
+    int arr[]=new int[size];
     public void addelement(int value)
     {
         arr[index++]=value;
@@ -71,7 +70,7 @@ public class Arrayoperation
         size=sc.nextInt();
         Arrayoperation ap=new Arrayoperation(size);
         while(true) {
-            logger.info("\n1)Add the element \n2) Remove the element  \n3)Display \n4)Increase array size \n5)search element \n6)exit");
+            logger.info("\n1)Add the element \n2) Remove the element  \n3)Display \n4)Insert at particular position \n5)search element \n6)exit");
             logger.info("Choose any one of the option in the above :");
             choice = sc.nextInt();
             if (choice == 1) {
