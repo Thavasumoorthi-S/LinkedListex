@@ -7,12 +7,13 @@ public class Arrayoperation
 {
     int index=0;
     int size;
+    int[] arr;
     Logger logger=Logger.getLogger("com.api.jar");
     Arrayoperation(int size)
     {
         this.size=size;
+        arr=new int[size];
     }
-    int arr[]=new int[size];
     public void addelement(int value)
     {
         arr[index++]=value;
