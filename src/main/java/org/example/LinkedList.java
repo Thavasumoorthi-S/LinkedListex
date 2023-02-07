@@ -1,6 +1,7 @@
 package org.example;
 
 import java.util.Scanner;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 public class LinkedList
 {
@@ -69,7 +70,7 @@ public class LinkedList
             logger.info(" LinkedList Is empty!");
         } else {
             while (temp != null) {
-                logger.info(""+temp.data);
+                logger.log(Level.INFO,Integer.toString(temp.data),+temp.data);
                 temp = temp.nextNode;
             }
 
