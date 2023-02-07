@@ -1,6 +1,7 @@
 package org.example;
 
 import java.util.Scanner;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Arrayoperation
@@ -26,7 +27,7 @@ public class Arrayoperation
     {
         for(int i=0;i<this.size;i++)
         {
-            logger.info("Element is :"+arr[i]);
+            logger.log(Level.INFO,Integer.toString(arr[i]),"Element is :"+arr[i]);
         }
     }
     public void insertatpos(int pos,int value)
@@ -61,7 +62,6 @@ public class Arrayoperation
         Scanner sc=new Scanner(System.in);
         Logger logger=Logger.getLogger("com.api.jar");
         int size;
-        int size2;
         int choice;
         int element;
         int pos;
