@@ -15,11 +15,11 @@ public class Arraylist {
         list.add("Ford");
         list.add("Nissan");
         logger.info(list.get(0));
-        logger.info(""+list.clone());
-        logger.info(""+list.hashCode());
-        logger.info(list.remove(6));
-        logger.info(""+list.add("BMW"));
-        logger.info(""+list.add("Tesla"));
+        logger.log(Level.INFO,()->""+list.clone());
+        logger.log(Level.INFO,()->""+list.hashCode());
+        logger.log(Level.INFO,()->""+list.remove(6));
+        list.add("BMW");
+        list.add("Tesla");
         logger.info(""+list.clone());
         logger.info(list.remove(0));
         logger.log(Level.INFO,()->""+list.isEmpty());
