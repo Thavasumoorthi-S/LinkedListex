@@ -26,7 +26,7 @@ public class Arraylist {
         logger.info(""+list.isEmpty());
         logger.info(""+list.size());
         list.clear();
-        logger.log(Level.INFO,"",list.isEmpty());
+        logger.log(Level.INFO,()->""+list.isEmpty());
 
     }
 }
