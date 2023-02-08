@@ -1,5 +1,6 @@
 package org.example;
 import java.util.ArrayList;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 public class Arraylist {
     public static void main(String[] args)
@@ -25,6 +26,7 @@ public class Arraylist {
         logger.info(""+list.isEmpty());
         logger.info(""+list.size());
         list.clear();
-        logger.info(""+list.isEmpty());
+        logger.log(Level.INFO,"",list.isEmpty());
+
     }
 }
