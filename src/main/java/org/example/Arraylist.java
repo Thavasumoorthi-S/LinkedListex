@@ -20,8 +20,8 @@ public class Arraylist {
         logger.log(Level.INFO,()->""+list.remove(6));
         list.add("BMW");
         list.add("Tesla");
-        logger.info(""+list.clone());
-        logger.info(list.remove(0));
+        logger.log(Level.INFO,()->""+list.clone());
+        logger.log(Level.INFO,()->""+list.remove(0));
         logger.log(Level.INFO,()->""+list.isEmpty());
         logger.log(Level.INFO,()->""+list.size());
         list.clear();
