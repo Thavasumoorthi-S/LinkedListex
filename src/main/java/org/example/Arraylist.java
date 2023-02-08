@@ -22,9 +22,8 @@ public class Arraylist {
         logger.info(""+list.add("Tesla"));
         logger.info(""+list.clone());
         logger.info(list.remove(0));
-        logger.info(list.toString());
-        logger.info(""+list.isEmpty());
-        logger.info(""+list.size());
+        logger.log(Level.INFO,()->""+list.isEmpty());
+        logger.log(Level.INFO,()->""+list.size());
         list.clear();
         logger.log(Level.INFO,()->""+list.isEmpty());
 
