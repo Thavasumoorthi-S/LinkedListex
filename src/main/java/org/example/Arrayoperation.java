@@ -6,100 +6,165 @@ import java.util.logging.Logger;
 
 public class Arrayoperation
 {
-    int index=0;
-    int size;
-    int[] arr;
-    Logger logger=Logger.getLogger("com.api.jar");
-    Arrayoperation(int size)
+    Logger logger=Logger.getLogger("com-apii-jaar");
+    int[] data;
+
+    int size=0;
+    int capacity;
+
+    Arrayoperation(int limit)
     {
-        this.size=size;
-        arr=new int[size];
+        data= new int[limit];
+        capacity=limit;
     }
-    public void addelement(int value)
+
+    public void add(int value)
     {
-        arr[index++]=value;
+        if(capacity==size)
+        {
+            expandarray();
+        }
+        data[size++]=value;
     }
-    public void removeelement()
+    private void expandarray()
     {
-        arr[--index]=0;
+        capacity=capacity*2;
+        data=java.util.Arrays.copyOf(data,capacity);
+
+    }
+    public void delete()
+    {
+        size=size-1;
+    }
+    public void insertatindex(int index,int value)
+    {
+        for(int i=size;i>=index;i--)
+        {
+            data[i]=data[i-1];
+        }
+        data[index]=value;
+        size++;
+    }
+
+    public void deleteatindex(int index)
+    {
+        for (int i=index+1;i<size;i++){
+            data[i-1]=data[i];
+
+        }
+        size--;
+    }
+    public void insertatbegin(int value)
+    {
+        for(int i=size;i>=0;i--)
+        {
+            if(capacity-1==size)
+            {
+                expandarray();
+            }
+
+            data[i+1]=data[i];
+        }
+
+        data[0]=value;
+        size++;
     }
     public void display()
     {
-        for(int i=0;i<this.size;i++)
+        for(int i=0;i<size;i++)
         {
-            logger.log(Level.INFO,Integer.toString(arr[i]),"Element is :"+arr[i]);
+            logger.log(Level.INFO, Integer.toString(data[i]),data[i]);
         }
     }
-    public void insertatpos(int pos,int value)
+    public void deleteatend()
     {
-        for(int i=this.index-1;i>=pos-1;i--)
-        {
-            arr[i+1]=arr[i];
-        }
-        arr[pos-1]=value;
-       this.index++;
+        size=size-1;
     }
     public void search(int value)
     {
-        int count=0;
-        for(int i=0;i<this.size;i++)
+        int flag=0;
+        for(int i=0;i<size;i++)
         {
-            if(arr[i]==value)
+            if(data[i]==value)
             {
-                count=1;
+                flag=1;
+                logger.info("Value is found ");
+                break;
             }
         }
-        if(count==1)
+        if(flag==0)
         {
-            logger.info("Element is found ");
+            logger.info("Value is  not found ");
         }
-        else {
-            logger.info("Element not found ");
-        }
+
     }
+
+
     public static void main(String[] args)
     {
-        Scanner sc=new Scanner(System.in);
-        Logger logger=Logger.getLogger("com.api.jar");
+        Logger logger=Logger.getLogger("com-api-jar");
         int size;
-        int choice;
-        int element;
-        int pos;
-        int element1;
-        int element2;
-        logger.info("Enter the size of the array: ");
+        Scanner sc=new Scanner(System.in);
+        logger.info("Enter the array size ");
         size=sc.nextInt();
-        Arrayoperation ap=new Arrayoperation(size);
-        while(true) {
-            logger.info("\n1)Add the element \n2) Remove the element  \n3)Display \n4)Insert at particular position \n5)search element \n6)exit");
+        Arrayoperation ex=new Arrayoperation(size);
+        int choice;
+        int index;
+        int element;
+        while(true)
+        {
+            logger.info("\n1)Add element \n2)Remove element \n3)insert at particular index position \n4)delete at particularindex position \n5)display \n6)insert at beginning \n7)Delete at end \n8)search element \n9)Exit");
             logger.info("Choose any one of the option in the above :");
-            choice = sc.nextInt();
-            if (choice == 1) {
-                logger.info("Enter the element : ");
-                element = sc.nextInt();
-                ap.addelement(element);
-            } else if (choice == 2) {
-                ap.removeelement();
-                logger.info("Successfully element removed");
-            } else if (choice == 3) {
-                ap.display();
-            } else if (choice == 4) {
-                logger.info("Enter the position :");
-                pos=sc.nextInt();
-                logger.info("Enter the element :");
-                element1=sc.nextInt();
-                ap.insertatpos(pos,element1);
+            choice=sc.nextInt();
+            if(choice==1)
+            {
+                logger.info("Enter the value: ");
+                element=sc.nextInt();
+                ex.add(element);
+            }
+            else if(choice==2)
+            {
+                ex.delete();
+            }
+            else if(choice==3)
+            {
+                logger.info("Enter the index ");
+                index=sc.nextInt();
+                logger.info("Enter the value ");
+                element=sc.nextInt();
+                ex.insertatindex(index,element);
+            }
+            else if(choice==4)
+            {
+                logger.info("Enter the index ");
+                index=sc.nextInt();
+                ex.deleteatindex(index);
             }
             else if(choice==5)
             {
-                logger.info("Enter the element :");
-                element2=sc.nextInt();
-                ap.search(element2);
+                ex.display();
             }
             else if(choice==6)
+            {
+                logger.info("Enter the element :");
+                element=sc.nextInt();
+                ex.insertatbegin(element);
+            }
+            else if(choice==7)
+            {
+                ex.deleteatend();
+            }
+            else if(choice==8)
+            {
+                logger.info("Enter the value ");
+                element=sc.nextInt();
+                ex.search(element);
+            }
+            else if(choice==9)
             {
                 break;
             }
         }
+
     }
 }
