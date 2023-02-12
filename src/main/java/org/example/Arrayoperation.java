@@ -8,7 +8,7 @@ public class Arrayoperation
 {
     Logger logger=Logger.getLogger("com-apii-jaar");
     int[] data;
-
+;//;/
     int size=0;
     int capacity;
 
